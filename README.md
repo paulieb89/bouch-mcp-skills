@@ -4,6 +4,8 @@ Free Claude skills that connect to BOUCH MCP servers. Real UK data, not AI imagi
 
 Each skill is a SKILL.md file that tells Claude which tools to call, in what order, and how to present the results. Connect the MCP server, drop in the skill, go.
 
+![Property report output — Newcastle family homes analysis](assets/property-report-output.png)
+
 ## Skills
 
 ### Property Quick Comps
