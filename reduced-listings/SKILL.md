@@ -1,11 +1,10 @@
 ---
 name: reduced-listings
 description: |
-  Find motivated sellers in a UK postcode. Pulls the most-reduced Rightmove
-  listings, scores each on days on market, price reduction flags, and discount
-  vs comparable sales. Use when someone asks "find me motivated sellers",
-  "who's dropped their price", "reduced properties near [postcode]",
-  "bargains in [area]", or "who's been on the market longest".
+  Find motivated sellers in a UK postcode. Pulls reduced Rightmove listings,
+  benchmarks against Land Registry comps, and assesses motivation signals.
+  Use when someone asks about reduced properties, motivated sellers, price
+  drops, bargains, or who has been on the market longest.
   Requires the Property MCP server (property-shared) to be connected.
 allowed-tools:
   - mcp__claude_ai_property__rightmove_search
@@ -13,151 +12,67 @@ allowed-tools:
   - mcp__claude_ai_property__property_comps
 ---
 
-# Reduced Listings — Motivated Seller Finder
+# Motivated Seller Finder
 
-You find properties where the seller is likely motivated to accept a lower offer. You pull the most-reduced listings from Rightmove, score each on motivation signals, benchmark against comparable sales, and present a ranked table with negotiation targets.
+Find properties where the seller is likely to accept less than asking. Combine Rightmove listing data with Land Registry comparable sales to separate genuine opportunities from noise.
 
-The person you are helping is a property investor looking for deals. They want to know who is desperate, not who is listing at a fair price.
+## Thinking Like an Investor
 
-## When to Use This Skill
+The user is hunting, not browsing. Every property you present should answer three questions:
 
-- "Find me motivated sellers in [postcode]"
-- "Who's dropped their price near [area]?"
-- "Reduced properties in [postcode]"
-- "What's been on the market longest in [area]?"
-- "Find me bargains near [postcode]"
-- Any request to find underpriced or reduced-price properties
+1. **Is the seller under pressure?** Time on market, price cuts, resubmissions after collapsed chains, and restricted buyer pools all point to motivation.
+2. **What is it actually worth?** The asking price is a wish. Comparable sales are the benchmark.
+3. **What should I offer?** A number that reflects the seller's position, adjusted for how long they've been waiting.
 
-## Required Setup
+Data that doesn't help the investor decide is noise. Cut it.
 
-This skill requires the **Property MCP server** (property-shared) to be connected.
+## What Motivation Looks Like
 
-```json
-{ "mcpServers": { "property": { "url": "https://property-shared.fly.dev/mcp" } } }
-```
+Not all reduced listings are motivated. A £1M house reduced by £5k is a rounding error. A £180k terrace relisted after 400 days with a collapsed chain — that's motivation.
 
-## Workflow
+**Strong signals:**
+- **Resubmitted** — a sale fell through. The vendor has already mentally spent the money. Strongest single signal.
+- **180+ days on market** — the property has been rejected at the current price. The vendor knows.
+- **10%+ below comp median** — pricing to shift, or a problem property. Both worth investigating.
 
-### Step 1: Clarify the Search
+**Moderate signals:**
+- Price reduced with 90+ days on market — tried, waited, capitulated.
+- EPC F or G — below minimum rental standard. A landlord may want out.
+- Lease under 80 years — below the informal mortgage threshold. Buyer pool shrinks.
 
-Get from the user:
-- **Postcode** (required)
-- **Property type** (optional: houses, flats, or both)
-- **Price range** (optional: min/max)
-- **Bedrooms** (optional: min)
+**Weak signals (note but don't overweight):**
+- Recently listed with "Price reduced" — could be strategic, not desperation.
+- Above median but reduced — still overpriced, just less so.
 
-If they just give a postcode, run with defaults (all types, no price filter).
+## What You Have and Don't Have
 
-### Step 2: Pull Most-Reduced Listings
+**Available:** `rightmove_search` with `sort_by="most_reduced"`, `rightmove_listing` for detail (listing_update_reason, first_visible_date, tenure, lease, service charge), `property_comps` for Land Registry benchmarks.
 
-Call `rightmove_search` with:
-- `postcode`: the user's postcode
-- `sort_by`: `"most_reduced"`
-- `property_type`: `"sale"`
-- Any filters the user specified (min_price, max_price, min_bedrooms)
+**Not available:** Original asking price, total reduction amount, number of price cuts, withdrawn/relisted history, Zoopla data (API discontinued 2022), vendor circumstances.
 
-This returns up to 25 listings ranked by price reduction. Note the `first_visible_date` for each — you need it for days-on-market calculation.
+Never imply you know the original price or the reduction size.
 
-### Step 3: Fetch Detail on Top 10
+## How to Work
 
-For each of the top 10 listings from Step 2, call `rightmove_listing` with the property ID or URL.
+**Gather:** Search Rightmove with `sort_by="most_reduced"` and `max_pages=1` (25 listings is enough — quality over quantity). Fetch detail on the most promising candidates — prioritise by oldest `first_visible_date`. Pull comps once for the area benchmark. If comps return fewer than 5 transactions or `escalated_from` is set, the median is unreliable — use the Rightmove listings median as a secondary benchmark and say so.
 
-Extract from each:
-- `listing_update_reason` — look for "Price reduced" or "Resubmitted"
-- `first_visible_date` — calculate days on market (today minus this date)
-- `price`, `bedrooms`, `property_type`, `tenure_type`
-- `years_remaining_on_lease` (if leasehold)
-- `annual_service_charge` (if leasehold)
-- `key_features`
-- `listing_status` (SOLD_STC, UNDER_OFFER — skip these, they're gone)
+**Analyse:** For each property, assess pressure (signals stacking), value (price vs comps as %), and offer (comp median adjusted for time and circumstances). A reasonable framework: 1% per 30 days beyond 60, capped at 15%, plus 3% for resubmissions. This is a starting point, not a valuation.
 
-Skip any listings that are SOLD_STC or UNDER_OFFER — they're not available.
+**Present:** Lead with a ranked summary table. Go deeper on the top 3 with a paragraph each connecting the signals into a narrative — not "this seller appears motivated" but "listed 491 days, resubmitted after a collapsed chain, 23% below median." End with what you can't see.
 
-### Step 4: Pull Area Comps
+## When Things Go Wrong
 
-Call `property_comps` once for the postcode. If the user specified a property type, pass the `property_type` filter (F/D/S/T).
+- **Zero reduced listings:** The area may not have enough stock. Widen the radius or suggest adjacent postcodes.
+- **Zero comps:** Use Rightmove asking prices as the benchmark and state clearly that no Land Registry data was available.
+- **Thin market (under 5 comps):** Flag it. Don't pretend 2 transactions make a reliable median.
+- **All listings are above median:** The "most reduced" sort returns the biggest reductions, not the cheapest properties. A £500k house in a £230k area is a different market segment — note it, don't dismiss it.
 
-Extract:
-- Median price (this is the benchmark)
-- Median price per sqft
-- Transaction count
+## Good vs Bad Output
 
-### Step 5: Score and Rank
+**Good:** Ranks by combined signal strength. States the benchmark up front. Negotiation targets are grounded in comps and time. Detail paragraphs connect multiple signals. Limitations stated plainly. Does not reproduce raw API data.
 
-For each property, calculate a motivation score out of 100:
+**Bad:** Lists every property with equal weight. Claims to know the original price. Gives targets without reasoning. Generic statements. Dumps JSON in the output.
 
-| Condition | Points |
-|-----------|--------|
-| `listing_update_reason` contains "Price reduced" | +25 |
-| `listing_update_reason` contains "Resubmitted" | +30 |
-| Days on market > 90 | +20 |
-| Days on market > 180 | +30 (replaces the 20) |
-| Price below comp median | +15 |
-| Price below comp median by 10%+ | +25 (replaces the 15) |
-| EPC rating F or G (from comps enrichment) | +10 |
-| Lease remaining < 80 years | +10 |
+## Formatting
 
-"Resubmitted" is a stronger signal than "Price reduced" — it often means a sale fell through. A property back on the market after a collapsed chain is highly motivated.
-
-Rank by total score descending.
-
-Calculate a **negotiation target** for each:
-- Start with comp median
-- Apply a time-on-market penalty: 1% per 30 days listed beyond 60 days, capped at 15%
-- If listing_update_reason is "Resubmitted", add an extra 3% discount (collapsed chain penalty)
-- Round to nearest £5,000
-
-### Step 6: Present Output
-
-```
-# Motivated Sellers: [Postcode]
-
-**Area benchmark**: Median £[X] | Price/sqft £[X] | [N] sales (last 24 months)
-
-## Top Opportunities
-
-| # | Address | Price | vs Median | Days Listed | Signal | Score | Target |
-|---|---------|-------|-----------|-------------|--------|-------|--------|
-| 1 | [addr] | £[X] | -8% | 142 days | Price reduced | 70 | £[X] |
-| 2 | [addr] | £[X] | -3% | 95 days | Resubmitted | 55 | £[X] |
-```
-
-For the top 3 properties, add a detail section:
-
-```
-### 1. [Address] — Score: [X]
-
-- Listed [X] days ago, [reduction signal]
-- [X]% [above/below] area median of £[X]
-- [Beds] bed [type], [tenure]
-- Service charge: £[X]/year (if leasehold)
-- **Negotiation target**: £[X]
-- **Why motivated**: [1-2 sentences specific to this property]
-```
-
-End with:
-
-```
-## What This Report Cannot See
-
-- Original asking price (Rightmove does not expose price history)
-- Total reduction amount or number of price cuts
-- Withdrawn and relisted history
-- Zoopla data (their API was discontinued in 2022)
-- Vendor's personal circumstances
-
-The motivation score is based on observable market signals only. Always verify with the estate agent before making assumptions about vendor motivation.
-
-Data analysis, not professional valuation advice.
-```
-
-## Output Rules
-
-- British spelling throughout
-- Prices formatted as £245,000
-- Days on market as whole numbers
-- Negotiation targets rounded to nearest £5,000
-- Skip properties that are SOLD_STC or UNDER_OFFER
-- Always state the limitations clearly
-- Do not claim to know the original price or reduction amount
-- Maximum 10 properties in the table, 3 in detail
+British spelling. Prices as £245,000. Days as whole numbers. Targets rounded to £5,000. Maximum 10 in summary, 3 in detail. Always include limitations. Always include: data analysis, not professional valuation advice.
