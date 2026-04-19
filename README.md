@@ -8,15 +8,22 @@ Most MCP-backed skills connect to free BOUCH MCP servers for real UK data. Stand
 
 ## Install
 
-**Claude Code plugin (easiest):**
+**One line (Claude Code):**
+```
+npx skills add paulieb89/bouch-mcp-skills
+```
+
+Installs all 30 skills. Works on any Claude Code install.
+
+**Claude Code plugin (curated pack):**
 ```
 /plugin marketplace add paulieb89/bouch-plugins
 /plugin install foundations@bouch-plugins
 ```
 
-This installs a curated 10-skill pack. For individual skills, or to grab the full 31, use git clone below.
+This installs a curated 10-skill Foundations pack.
 
-**Git clone (Claude Code manual):**
+**Git clone (manual / single skill):**
 ```bash
 git clone https://github.com/paulieb89/bouch-mcp-skills.git
 cp -r bouch-mcp-skills/property-report ~/.claude/skills/
