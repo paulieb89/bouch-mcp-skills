@@ -1,0 +1,13 @@
+{
+  "_comment": "Default underwriting thresholds for a standard UK BTL investor outside Zone 1-2 London. Copy this file, edit thresholds, and pass via --criteria to underwrite.py for client-specific criteria.",
+  "min_gross_yield_pct": 6.0,
+  "min_epc_grade": "D",
+  "min_comp_count": 5,
+  "max_premium_over_median_pct": 10,
+  "_notes": {
+    "min_gross_yield_pct": "6% gross is the conventional UK BTL floor outside London. Drop to 3.5-4% for capital-growth London buyers. Push to 7-8% for yield-first investors in the North.",
+    "min_epc_grade": "D is compliant today but exposed to MEES 2028/2030 rise to C. Set to C if the buyer wants zero retrofit risk.",
+    "min_comp_count": "Fewer than 5 comps = thin market, median unreliable. Raise to 10 for large-value deals where signal confidence matters.",
+    "max_premium_over_median_pct": "Asking prices above median by this much trigger a fail. Raise if the property has genuine differentiators (unusual size, extension, plot)."
+  }
+}
