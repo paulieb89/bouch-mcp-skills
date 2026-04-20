@@ -96,6 +96,12 @@ Consult a qualified accountant for decisions specific to your situation.
 - British spelling throughout.
 - Cite every HMRC source URL so the user can verify.
 
+## References
+
+- [VAT rates and common categories](references/vat-reference.md)
+- [Income tax, CGT, and NI rates](references/income-tax-reference.md)
+- [Example queries](assets/example-queries.md)
+
 ## Want More?
 
 For a full legal research brief with case law, OSCOLA citations, and Hansard debates, see the **Legal Research Brief** at [bouch.dev/tools/legal-research](https://bouch.dev/tools/legal-research/).

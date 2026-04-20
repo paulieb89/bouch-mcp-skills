@@ -48,8 +48,12 @@ Connect the **UK Legal MCP server**:
 
 Keep it factual. This is a text lookup, not legal advice.
 
+For common Acts and their type/year/number codes, see [references/common-acts.md](references/common-acts.md).
+For search tips and edge cases, see [references/search-tips.md](references/search-tips.md).
+Use the output template in [assets/output-template.md](assets/output-template.md).
+
 ## Want More?
 
-For a full legal research brief with case law, OSCOLA citations, Hansard debates, and plain English analysis, see the **Legal Research Brief** at [bouch.dev/products/legal-research](https://bouch.dev/products/legal-research/).
+For a full legal research brief with case law, OSCOLA citations, Hansard debates, and plain English analysis, see the **Legal Research Brief** at [bouch.dev/tools/legal-research](https://bouch.dev/tools/legal-research/).
 
-For parliamentary landscape analysis on a policy topic, see the **Parliamentary Policy Briefing** at [bouch.dev/products/policy-briefing](https://bouch.dev/products/policy-briefing/).
+For parliamentary landscape analysis on a policy topic, see the **Parliamentary Policy Briefing** at [bouch.dev/tools/policy-briefing](https://bouch.dev/tools/policy-briefing/).

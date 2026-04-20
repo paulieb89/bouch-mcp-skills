@@ -49,11 +49,12 @@ cp -r bouch-mcp-skills/property-report ~/.claude/skills/
 | [property-to-sheets](property-to-sheets/) | Property report saved into a Google Sheet | property + sheets |
 | [reduced-listings](reduced-listings/) | Motivated-seller listings (recent price reductions) | property |
 
-### Legal (6)
+### Legal (7)
 
 | Skill | What it does | MCP |
 |---|---|---|
 | [legal-research](legal-research/) | Full UK legal brief with OSCOLA citations, Hansard, plain-English summary | uk-legal |
+| [legal-how-to](legal-how-to/) | Lawyer's guide: five core workflows with example prompts and tool reference | uk-legal |
 | [policy-briefing](policy-briefing/) | Parliamentary landscape, key MPs, reception assessment | uk-legal |
 | [legislation-lookup](legislation-lookup/) | Search Acts + retrieve sections with in-force status | uk-legal |
 | [mp-dig](mp-dig/) | Hansard + interests + voting record on a given MP | uk-legal |
