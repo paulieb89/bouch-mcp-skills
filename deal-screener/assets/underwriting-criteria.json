@@ -1,0 +1,17 @@
+{
+  "_comment": "Default underwriting thresholds for UK BTL screening. Edit thresholds for different investor profiles.",
+  "min_gross_yield_pct": 5.0,
+  "max_price_premium_pct": 10.0,
+  "max_annual_service_charge": 5000,
+  "min_lease_remaining_years": 90,
+  "min_comp_count": 3,
+  "min_rental_listing_count": 5,
+  "_notes": {
+    "min_gross_yield_pct": "5% gross is the floor for BTL outside Zone 1-2 London. Drop to 3.5% for capital-growth buyers.",
+    "max_price_premium_pct": "Asking prices above comp median by this much trigger a fail. Raise if property has genuine differentiators.",
+    "max_annual_service_charge": "Above £5k/year materially erodes net yield on typical flats.",
+    "min_lease_remaining_years": "Below 90 years affects mortgage-ability and resale. Below 80 is a hard problem.",
+    "min_comp_count": "Fewer than 3 comps = thin market, median unreliable — flag but don't auto-fail.",
+    "min_rental_listing_count": "Below 5 live rentals = thin market — flag yield confidence as low."
+  }
+}
