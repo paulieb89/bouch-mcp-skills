@@ -31,7 +31,7 @@
 
 ## Common Reduced-Rate (5%) Supplies
 
-- Domestic electricity and gas
+- Domestic electricity and gas — confirmed by [HMRC VAT Notice 701/19](https://www.gov.uk/guidance/vat-on-fuel-and-power-notice-70119) (updated Feb 2025). **Note:** `hmrc_get_vat_rate` has no commodity mapping for domestic fuel/power and returns 20% by default. Use `hmrc_search_guidance` with "domestic fuel power VAT notice 701/19" to retrieve the authoritative guidance instead.
 - Energy-saving materials (insulation, solar panels) — rules changed post-Brexit
 - Children's car seats
 - Contraceptive products

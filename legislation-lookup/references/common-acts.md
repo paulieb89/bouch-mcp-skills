@@ -33,7 +33,7 @@ Format for `legislation_get_section`: `type=ukpga, year=YYYY, number=NN, section
 
 | Act | Type | Year | Number |
 |-----|------|------|--------|
-| Companies Act 2006 | ukpga | 2006 | 46 |
+| Companies Act 2006 ⚠️ | ukpga | 2006 | 46 |
 | Insolvency Act 1986 | ukpga | 1986 | 45 |
 | Sale of Goods Act 1979 | ukpga | 1979 | 54 |
 | Consumer Rights Act 2015 | ukpga | 2015 | 15 |
@@ -67,6 +67,10 @@ Format for `legislation_get_section`: `type=ukpga, year=YYYY, number=NN, section
 | Value Added Tax Act 1994 | ukpga | 1994 | 23 |
 | Inheritance Tax Act 1984 | ukpga | 1984 | 51 |
 | Capital Gains Tax Act 1979 (TCGA 1992 supersedes) | ukpga | 1992 | 12 |
+
+## Known API Limitations
+
+**Companies Act 2006 ⚠️** — both `legislation_get_toc` and `legislation_get_section` return "Document is empty" for this Act. The reference number ukpga/2006/46 is correct (confirmed via `legislation_search`) but the Act is not served by the legislation.gov.uk API. Use [legislation.gov.uk directly](https://www.legislation.gov.uk/ukpga/2006/46/contents) for Companies Act sections, or search by keyword with `fulltext=true`.
 
 ## Notes
 
