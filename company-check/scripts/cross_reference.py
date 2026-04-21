@@ -202,19 +202,30 @@ def enrich_psc(raw: dict) -> dict:
 
 
 def enrich_disqualification(raw: dict, officers_enriched: dict) -> dict:
-    """Match active officer names against disqualified_search results."""
+    """Match active officer names against disqualified_search results.
+
+    An officer is counted as `checked` only when a corresponding entry
+    exists in disqualified_lookups — the orchestrator is responsible for
+    populating that dict per officer when Lane A step 1.6 runs. An entry
+    with zero items still counts as checked (search ran, returned nothing).
+    An empty disqualified_lookups means the per-officer search step was
+    skipped (Lane B or abbreviated Lane A).
+    """
     hits_by_officer = {}
+    checked_officer_count = 0
     disqualified_lookups = raw.get("disqualified_lookups") or {}
 
     for officer in officers_enriched.get("active_officers", []):
         officer_name = officer.get("name") or ""
         lookup_key = _normalise_name(officer_name)
-        search_result = (
-            disqualified_lookups.get(lookup_key)
-            or disqualified_lookups.get(officer_name)
-            or disqualified_lookups.get(officer_name.lower())
-            or {}
-        )
+        search_result = None
+        for candidate in (lookup_key, officer_name, officer_name.lower()):
+            if candidate in disqualified_lookups:
+                search_result = disqualified_lookups[candidate] or {}
+                break
+        if search_result is None:
+            continue
+        checked_officer_count += 1
         items = search_result.get("items") or []
 
         matches = []
@@ -259,7 +270,8 @@ def enrich_disqualification(raw: dict, officers_enriched: dict) -> dict:
                 })
 
     return {
-        "checked_officer_count": len(officers_enriched.get("active_officers", [])),
+        "checked_officer_count": checked_officer_count,
+        "active_officer_count": len(officers_enriched.get("active_officers", [])),
         "hit_count": len(hits_by_officer),
         "any_current_disqualification": any_active,
         "any_historic_disqualification": any_historic,
