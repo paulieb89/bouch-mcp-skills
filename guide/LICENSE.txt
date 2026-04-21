@@ -1,0 +1,58 @@
+BOUCH Skills Guide — Licence
+
+This guide (claude-skills-guide-uk.md, claude-skills-guide-uk.pdf,
+addendum-skills-to-plugins.md, addendum-skills-to-plugins.pdf) is:
+
+  Copyright © 2026 Paul Boucherat / BOUCH.
+
+Licensed under the Creative Commons Attribution-NonCommercial 4.0
+International licence (CC BY-NC 4.0).
+
+You are free to:
+
+  SHARE — copy and redistribute the material in any medium or format
+  ADAPT — remix, transform, and build upon the material
+
+Under the following terms:
+
+  ATTRIBUTION
+    You must give appropriate credit, provide a link to the licence,
+    and indicate if changes were made. You may do so in any reasonable
+    manner, but not in any way that suggests the licensor endorses you
+    or your use. A credit line such as:
+
+        Based on "Teach Claude New Skills" by Paul Boucherat / BOUCH,
+        https://bouch.dev — CC BY-NC 4.0.
+
+  NON-COMMERCIAL
+    You may not use the material for commercial purposes. Reselling,
+    bundling into a paid product, or incorporating into a paid training
+    programme is not permitted without a separate commercial licence.
+
+  NO ADDITIONAL RESTRICTIONS
+    You may not apply legal terms or technological measures that
+    legally restrict others from doing anything the licence permits.
+
+Notices:
+
+  You do not have to comply with the licence for elements of the
+  material in the public domain or where your use is permitted by an
+  applicable exception or limitation.
+
+  No warranties are given. The licence may not give you all of the
+  permissions necessary for your intended use. For example, other
+  rights such as publicity, privacy, or moral rights may limit how
+  you use the material.
+
+Full legal code:
+
+  https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+Commercial licence enquiries:
+
+  paul@bouch.dev
+
+Separate note: code in this repository (skills, plugins, supporting
+scripts) is licensed separately under MIT. See the LICENSE file at the
+repository root and the LICENSE files inside each plugin directory.
+This CC BY-NC licence applies to the guide documents only.
