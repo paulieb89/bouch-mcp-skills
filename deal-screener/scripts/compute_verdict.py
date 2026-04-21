@@ -42,7 +42,7 @@ def load_criteria(criteria_path: Path | None) -> dict:
     return DEFAULT_CRITERIA
 
 
-def check_signal(label: str, value, threshold, direction: str, flags: list, reasons: list):
+def check_signal(label: str, value, threshold, direction: str, flags: list, reasons: list, unit: str = "%"):
     """Evaluate one underwriting signal. direction: 'min' or 'max'."""
     if value is None:
         flags.append({"signal": label, "value": None, "result": "MISSING", "threshold": threshold})
@@ -58,7 +58,7 @@ def check_signal(label: str, value, threshold, direction: str, flags: list, reas
     flags.append({"signal": label, "value": value, "threshold": threshold, "result": result})
     if not passed:
         if direction == "min":
-            reasons.append(f"{label} {value:.1f}% below minimum {threshold}%")
+            reasons.append(f"{label} {value:.1f}{unit} below minimum {threshold}{unit}")
         else:
             reasons.append(f"{label} {value:,.0f} exceeds maximum {threshold:,.0f}")
     return passed, False
@@ -126,7 +126,8 @@ def compute(raw: dict, criteria: dict) -> dict:
         lease_passed, _ = check_signal(
             "Lease remaining", lease_years,
             criteria["min_lease_remaining_years"], "min",
-            signals, fail_reasons
+            signals, fail_reasons,
+            unit=" years",
         )
     elif is_leasehold:
         signals.append({"signal": "Lease remaining", "value": None, "result": "MISSING"})
