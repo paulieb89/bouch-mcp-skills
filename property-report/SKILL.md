@@ -106,7 +106,8 @@ Default to Lane B for vague postcode queries. Lane A needs a street address.
 
 - **`property_report` (aggregate tool) rejects postcode-only input** — it requires a street address + postcode. For postcode-only queries, call `property_comps` / `property_yield` / `rental_analysis` individually instead (Lane B).
 - **`property_yield` with `property_type` filter can return null rent** if there are too few type-matched rental listings. If the filtered call returns `"median_monthly_rent": null`, retry without the type filter and use the blended sector result, noting the fallback in the output.
-- **`property_epc` matches by postcode + nearest address** — if the returned certificate's floor area or property type doesn't match the listing, flag as a potential wrong-certificate match. Do not treat a mismatched EPC as ground truth.
+- **`property_epc` requires `postcode`** — `postcode` is a required argument; `address` is optional and refines the match. Calling with `address` only (e.g. `address="39 Havenwood Rise, NG11 9HD"`) throws a `missing_argument` validation error. Always pass both: `postcode="NG11 9HD", address="39 Havenwood Rise"`. If the returned certificate's floor area or property type doesn't match the listing, flag as a potential wrong-certificate match — do not treat a mismatched EPC as ground truth.
+- **`rightmove_search` rent radius** — the default radius is narrow (often 0.25mi). For `property_type=rent` in suburban / low-density postcodes this routinely returns 0 listings. Start rent queries at `radius=1` (one mile) and narrow only if flooded. Sale queries can stay at default — for-sale stock is denser.
 - **Blended `property_comps`** — a sector-level median without a `property_type` filter blends all stock (flats, semis, detacheds). When the listing is a specific type, always filter (`property_type=T` for terraced, etc.) so the premium/discount calculation is like-for-like. Call out the blended baseline if you could not filter.
 
 ## Workflow (Lane A — the full report)
@@ -116,9 +117,9 @@ Default to Lane B for vague postcode queries. Lane A needs a street address.
 Call the MCP tools in this order, in parallel where dependencies allow:
 
 1. `property_comps` with the postcode (and `property_type` filter if the area has mixed stock: F=flat, D=detached, S=semi, T=terraced). Extract median price — this feeds later steps.
-2. `property_epc` with the street address (subject property detail: current + potential rating, floor area, annual costs).
+2. `property_epc` with `postcode` (required) + `address` (optional, refines the match): `postcode="NG11 9HD", address="39 Havenwood Rise"`. Returns current + potential rating, floor area, annual costs.
 3. `rental_analysis` with the postcode AND `purchase_price=<median from Step 1>` to populate gross yield.
-4. `rightmove_search` with `channel=RENT` for actual listings (rental_analysis aggregates can be misleading — see `references/rental-normalisation.md`).
+4. `rightmove_search` with `property_type="rent"` and `radius=1` for actual listings (rental_analysis aggregates can be misleading — see `references/rental-normalisation.md`). Default radius is ~0.25mi which often returns zero in low-density postcodes — start at 1 mile and narrow only if results flood.
 5. `property_yield` with the postcode (same `property_type` filter as Step 1 if used).
 6. `stamp_duty` with the median price. If primary residence not specified, compute both (additional_property=true and =false).
 7. `rightmove_search` with `channel=BUY` for current-market context.
