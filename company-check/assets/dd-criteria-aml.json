@@ -1,0 +1,45 @@
+{
+  "_comment": "AML / compliance officer profile. Focused on beneficial ownership transparency, PEP signals, overseas structures, and VAT validity. Low weight on filing admin; high weight on ownership opacity.",
+  "_profile": "aml",
+  "filings": {
+    "max_confirmation_statement_overdue_days": 90,
+    "max_accounts_overdue_days": 180,
+    "weight": 1
+  },
+  "officers": {
+    "flag_appointment_count_threshold": 15,
+    "max_director_resignations_12mo": 3,
+    "overseas_directors_pct_threshold": 25,
+    "weight": 2
+  },
+  "psc": {
+    "flag_overseas_corporate_psc": true,
+    "require_named_ultimate_beneficial_owner": true,
+    "weight": 3
+  },
+  "disqualification": {
+    "block_any_current_disqualification": true,
+    "block_any_historic_disqualification_years": 10,
+    "weight": 2
+  },
+  "insolvency": {
+    "block_winding_up_petition_months": 24,
+    "block_winding_up_order_ever": false,
+    "watch_creditors_voluntary_liquidation_months": 24,
+    "weight": 2
+  },
+  "charges": {
+    "flag_recent_charges_months": 0,
+    "weight": 0
+  },
+  "vat": {
+    "require_valid_vat_if_trading": true,
+    "flag_address_discrepancy": true,
+    "weight": 3
+  },
+  "_notes": {
+    "_profile": "Use for: KYB onboarding, Money Laundering Regulations 2017 compliance checks, suspicious activity detection, counterparty screening.",
+    "_diff_from_default": "PSC opacity and VAT discrepancy weighted 3. Overseas-director threshold lowered to 25%. Insolvency cares about recency only, not history. Filing admin deprioritised (AML cares about ownership, not paperwork).",
+    "_future_hooks": "sanctions.block_uk_hmt_hit (HMT financial sanctions list) and pep.block_pep_match (Politically Exposed Persons) will be added when those MCP tools land. Currently not scored."
+  }
+}

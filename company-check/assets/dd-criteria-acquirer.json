@@ -1,0 +1,44 @@
+{
+  "_comment": "M&A acquirer profile. Strictest across every category. Any overdue filing fails. Used before buying a company or taking a controlling stake.",
+  "_profile": "acquirer",
+  "filings": {
+    "max_confirmation_statement_overdue_days": 0,
+    "max_accounts_overdue_days": 0,
+    "weight": 3
+  },
+  "officers": {
+    "flag_appointment_count_threshold": 8,
+    "max_director_resignations_12mo": 2,
+    "overseas_directors_pct_threshold": 50,
+    "weight": 2
+  },
+  "psc": {
+    "flag_overseas_corporate_psc": true,
+    "require_named_ultimate_beneficial_owner": true,
+    "weight": 3
+  },
+  "disqualification": {
+    "block_any_current_disqualification": true,
+    "block_any_historic_disqualification_years": 15,
+    "weight": 3
+  },
+  "insolvency": {
+    "block_winding_up_petition_months": 120,
+    "block_winding_up_order_ever": true,
+    "watch_creditors_voluntary_liquidation_months": 60,
+    "weight": 3
+  },
+  "charges": {
+    "flag_recent_charges_months": 12,
+    "weight": 2
+  },
+  "vat": {
+    "require_valid_vat_if_trading": true,
+    "flag_address_discrepancy": true,
+    "weight": 2
+  },
+  "_notes": {
+    "_profile": "Use for: acquisitions, management buyouts, strategic investment, taking controlling stakes. Strictest profile. One fail is usually enough to WATCH.",
+    "_diff_from_default": "Zero tolerance on overdue filings. Appointment-count threshold tightened to 8. All category weights bumped. Historic disqualification window 15yr. Charges watched across 12 months."
+  }
+}

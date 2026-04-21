@@ -1,0 +1,44 @@
+{
+  "_comment": "Lender profile. Cares about filing discipline, charges, insolvency recency, and repayment capacity signals. Strictest on winding-up history and overdue accounts.",
+  "_profile": "lender",
+  "filings": {
+    "max_confirmation_statement_overdue_days": 14,
+    "max_accounts_overdue_days": 30,
+    "weight": 3
+  },
+  "officers": {
+    "flag_appointment_count_threshold": 10,
+    "max_director_resignations_12mo": 2,
+    "overseas_directors_pct_threshold": 50,
+    "weight": 2
+  },
+  "psc": {
+    "flag_overseas_corporate_psc": true,
+    "require_named_ultimate_beneficial_owner": true,
+    "weight": 2
+  },
+  "disqualification": {
+    "block_any_current_disqualification": true,
+    "block_any_historic_disqualification_years": 15,
+    "weight": 3
+  },
+  "insolvency": {
+    "block_winding_up_petition_months": 60,
+    "block_winding_up_order_ever": true,
+    "watch_creditors_voluntary_liquidation_months": 60,
+    "weight": 3
+  },
+  "charges": {
+    "flag_recent_charges_months": 6,
+    "weight": 2
+  },
+  "vat": {
+    "require_valid_vat_if_trading": true,
+    "flag_address_discrepancy": false,
+    "weight": 1
+  },
+  "_notes": {
+    "_profile": "Use for: lenders, invoice finance providers, asset finance, property finance, trade credit decisions.",
+    "_diff_from_default": "Tighter filing thresholds (14/30 days vs 30/90). Winding-up petition window 60mo vs 36. Historic disqualification window 15yr vs 10. Recent charges (6mo) enabled as a signal."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "_comment": "Balanced default DD criteria. Copy and edit for a specific use case, or use a preset (lender / journalist / acquirer / aml). Scoring weights are 0 (ignore) to 3 (block-level).",
+  "_profile": "defaults",
+  "filings": {
+    "max_confirmation_statement_overdue_days": 30,
+    "max_accounts_overdue_days": 90,
+    "weight": 2
+  },
+  "officers": {
+    "flag_appointment_count_threshold": 10,
+    "max_director_resignations_12mo": 3,
+    "overseas_directors_pct_threshold": 50,
+    "weight": 1
+  },
+  "psc": {
+    "flag_overseas_corporate_psc": true,
+    "require_named_ultimate_beneficial_owner": true,
+    "weight": 2
+  },
+  "disqualification": {
+    "block_any_current_disqualification": true,
+    "block_any_historic_disqualification_years": 10,
+    "weight": 3
+  },
+  "insolvency": {
+    "block_winding_up_petition_months": 36,
+    "block_winding_up_order_ever": true,
+    "watch_creditors_voluntary_liquidation_months": 24,
+    "weight": 3
+  },
+  "charges": {
+    "flag_recent_charges_months": 0,
+    "weight": 0
+  },
+  "vat": {
+    "require_valid_vat_if_trading": true,
+    "flag_address_discrepancy": true,
+    "weight": 1
+  },
+  "_notes": {
+    "filings": "Overdue confirmation/accounts = management discipline signal. Lenders weight higher (2-3). Journalists lower (0-1).",
+    "officers": "Appointment count >=10 = possible nominee/phoenix pattern. Churn >=3 in 12mo = instability. Acquirers weight higher (2-3).",
+    "psc": "Overseas corporate PSC + no named ultimate beneficial owner = opacity. AML weight 3, most others 1-2.",
+    "disqualification": "Current disqualification is near-always a hard block. Historic disqualification within N years is a review flag.",
+    "insolvency": "Winding-up order ever = hard block for lenders/acquirers. Journalists care about history longer, AML treats any recent insolvency as FLAG.",
+    "charges": "Registered charges against the company (secured debt). Lenders care about recency; others weight 0 by default.",
+    "vat": "Trading-address vs VAT-registered-address divergence is a compliance signal. AML weight 2-3; others 1."
+  }
+}

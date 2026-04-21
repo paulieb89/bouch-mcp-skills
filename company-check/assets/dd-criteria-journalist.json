@@ -1,0 +1,44 @@
+{
+  "_comment": "Investigative journalist profile. Cares about opacity (nominee directors, overseas PSCs, untraceable ownership), director networks, and disqualification history going back further. Low weight on filing paperwork.",
+  "_profile": "journalist",
+  "filings": {
+    "max_confirmation_statement_overdue_days": 365,
+    "max_accounts_overdue_days": 365,
+    "weight": 0
+  },
+  "officers": {
+    "flag_appointment_count_threshold": 5,
+    "max_director_resignations_12mo": 3,
+    "overseas_directors_pct_threshold": 30,
+    "weight": 2
+  },
+  "psc": {
+    "flag_overseas_corporate_psc": true,
+    "require_named_ultimate_beneficial_owner": true,
+    "weight": 3
+  },
+  "disqualification": {
+    "block_any_current_disqualification": false,
+    "block_any_historic_disqualification_years": 20,
+    "weight": 2
+  },
+  "insolvency": {
+    "block_winding_up_petition_months": 120,
+    "block_winding_up_order_ever": false,
+    "watch_creditors_voluntary_liquidation_months": 120,
+    "weight": 1
+  },
+  "charges": {
+    "flag_recent_charges_months": 0,
+    "weight": 0
+  },
+  "vat": {
+    "require_valid_vat_if_trading": false,
+    "flag_address_discrepancy": true,
+    "weight": 1
+  },
+  "_notes": {
+    "_profile": "Use for: investigative reporting, beneficial ownership tracing, shell company detection, director network mapping.",
+    "_diff_from_default": "Appointment-count threshold dropped to 5 (more sensitive to nominee patterns). PSC opacity weighted 3. Historic disqualification window extended to 20yr. Insolvency treated as history not block."
+  }
+}
