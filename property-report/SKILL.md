@@ -104,7 +104,13 @@ Default to Lane B for vague postcode queries. Lane A needs a street address.
 
 ### Known tool behaviours to handle
 
-- **`property_report` (aggregate tool) rejects postcode-only input** — it requires a street address + postcode. For postcode-only queries, call `property_comps` / `property_yield` / `rental_analysis` individually instead (Lane B).
+- **Do NOT use `property_report` for investment analysis** — it's an aggregate convenience tool that blends all stock types, returns a sector-wide median regardless of `property_type`, and rejects postcode-only input. The blended median distorts every downstream calculation (yield, premium, comp discount). Always use the individual tools (`property_comps`, `property_yield`, `rental_analysis`) so you can filter by `property_type` and narrow `search_level`. Only use `property_report` for a quick area overview where like-for-like comparison isn't needed.
+- **`property_comps` supports three `search_level` values — use the narrowest that returns ≥5 comps:**
+  - `"postcode"` — exact postcode match only (e.g. NG7 1DB), tightest like-for-like, often 2–8 results
+  - `"sector"` (default) — full sector (e.g. NG7 1), 20–50 results, risks blending distinct sub-areas (Radford vs University Park)
+  - `"district"` — full district (e.g. NG7), broad, only use as fallback when sector is thin
+  - Start at `"postcode"`, widen only if `count < 5`. If you widen, flag it in the output ("sector median used because postcode-only returned 3 comps").
+- **Always pass `property_type` on `property_comps` and `property_yield` when you know it** (F=flat, D=detached, S=semi, T=terraced). Without the filter, a terrace investment gets benchmarked against detached housing in the same postcode. The premium/discount figure becomes meaningless.
 - **`property_yield` with `property_type` filter can return null rent** if there are too few type-matched rental listings. If the filtered call returns `"median_monthly_rent": null`, retry without the type filter and use the blended sector result, noting the fallback in the output.
 - **`property_epc` requires `postcode`** — `postcode` is a required argument; `address` is optional and refines the match. Calling with `address` only (e.g. `address="39 Havenwood Rise, NG11 9HD"`) throws a `missing_argument` validation error. Always pass both: `postcode="NG11 9HD", address="39 Havenwood Rise"`. If the returned certificate's floor area or property type doesn't match the listing, flag as a potential wrong-certificate match — do not treat a mismatched EPC as ground truth.
 - **`rightmove_search` rent radius** — the default radius is narrow (often 0.25mi). For `property_type=rent` in suburban / low-density postcodes this routinely returns 0 listings. Start rent queries at `radius=1` (one mile) and narrow only if flooded. Sale queries can stay at default — for-sale stock is denser.
@@ -116,7 +122,7 @@ Default to Lane B for vague postcode queries. Lane A needs a street address.
 
 Call the MCP tools in this order, in parallel where dependencies allow:
 
-1. `property_comps` with the postcode (and `property_type` filter if the area has mixed stock: F=flat, D=detached, S=semi, T=terraced). Extract median price — this feeds later steps.
+1. `property_comps` with `postcode` + `property_type` filter + `search_level="postcode"` (tightest). If `count < 5`, retry with `search_level="sector"`; flag the widening in the output. Do NOT skip the type filter when you know the type. Extract median price — this feeds later steps.
 2. `property_epc` with `postcode` (required) + `address` (optional, refines the match): `postcode="NG11 9HD", address="39 Havenwood Rise"`. Returns current + potential rating, floor area, annual costs.
 3. `rental_analysis` with the postcode AND `purchase_price=<median from Step 1>` to populate gross yield.
 4. `rightmove_search` with `property_type="rent"` and `radius=1` for actual listings (rental_analysis aggregates can be misleading — see `references/rental-normalisation.md`). Default radius is ~0.25mi which often returns zero in low-density postcodes — start at 1 mile and narrow only if results flood.
