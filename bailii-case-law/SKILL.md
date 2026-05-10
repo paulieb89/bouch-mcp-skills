@@ -7,9 +7,9 @@ description: |
   EWHC, Upper Tribunal, EAT, and more. Requires the BAILII MCP server
   running locally (BAILII blocks cloud IPs).
 allowed-tools:
-  - mcp__bailii__bailii_search
-  - mcp__bailii__bailii_get_judgment
-  - mcp__bailii__bailii_list_courts
+  - mcp__claude_ai_bailii__bailii_search
+  - mcp__claude_ai_bailii__bailii_get_judgment
+  - mcp__claude_ai_bailii__bailii_list_courts
 ---
 
 # BAILII Case Law Research
