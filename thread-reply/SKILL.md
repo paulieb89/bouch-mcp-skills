@@ -5,9 +5,6 @@ description: |
   Use when Paul wants to respond to a post where someone is describing a problem
   he can actually help with. Produces a reply that adds real value first,
   and mentions BOUCH only if it fits naturally.
-allowed-tools:
-  - Read
-  - AskUserQuestion
 ---
 
 # Thread Reply Drafter

@@ -7,17 +7,6 @@ description: |
   "write a strategy for X", "build a Pine Script for Y", "code up this trading idea",
   "how do I implement Z in Pine Script", or pastes a trading concept they want to test.
   Requires the PineScript MCP server (pinescript-mcp) to be connected.
-allowed-tools:
-  - mcp__claude_ai_pinescript-mcp__search_docs
-  - mcp__claude_ai_pinescript-mcp__get_doc
-  - mcp__claude_ai_pinescript-mcp__get_section
-  - mcp__claude_ai_pinescript-mcp__list_docs
-  - mcp__claude_ai_pinescript-mcp__list_sections
-  - mcp__claude_ai_pinescript-mcp__resolve_topic
-  - mcp__claude_ai_pinescript-mcp__get_functions
-  - mcp__claude_ai_pinescript-mcp__validate_function
-  - mcp__claude_ai_pinescript-mcp__lint_script
-  - mcp__claude_ai_pinescript-mcp__edit_and_lint
 ---
 
 # Pine Script Strategy Builder

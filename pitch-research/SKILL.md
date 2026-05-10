@@ -17,21 +17,6 @@ compatibility: Requires the UK Due Diligence MCP server and WebSearch/WebFetch a
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - mcp__claude_ai_uk-due-diligence__company_search
-  - mcp__claude_ai_uk-due-diligence__company_profile
-  - mcp__claude_ai_uk-due-diligence__company_officers
-  - mcp__claude_ai_uk-due-diligence__company_psc
-  - mcp__claude_ai_uk-due-diligence__gazette_insolvency
-  - mcp__claude_ai_uk-due-diligence__vat_validate
-  - mcp__claude_ai_uk-due-diligence__charity_search
-  - mcp__claude_ai_uk-due-diligence__charity_profile
-  - mcp__claude_ai_uk-due-diligence__land_title_search
-  - mcp__claude_ai_uk-due-diligence__disqualified_search
-  - mcp__claude_ai_uk-due-diligence__disqualified_profile
-  - WebSearch
-  - WebFetch
-  - AskUserQuestion
 ---
 
 # Pitch Research

@@ -18,10 +18,6 @@ compatibility: Requires WebSearch and WebFetch access.
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - WebSearch
-  - WebFetch
-  - AskUserQuestion
 ---
 
 # Cultural Intelligence

@@ -13,21 +13,6 @@ compatibility: "Requires UK Due Diligence MCP server."
 metadata:
   author: bouch
   version: "3.0"
-allowed-tools:
-  - mcp__claude_ai_uk-due-diligence__company_search
-  - mcp__claude_ai_uk-due-diligence__company_profile
-  - mcp__claude_ai_uk-due-diligence__company_officers
-  - mcp__claude_ai_uk-due-diligence__company_psc
-  - mcp__claude_ai_uk-due-diligence__gazette_insolvency
-  - mcp__claude_ai_uk-due-diligence__vat_validate
-  - mcp__claude_ai_uk-due-diligence__disqualified_search
-  - mcp__claude_ai_uk-due-diligence__disqualified_profile
-  - mcp__claude_ai_uk-due-diligence__charity_search
-  - mcp__claude_ai_uk-due-diligence__charity_profile
-  - mcp__claude_ai_uk-due-diligence__land_title_search
-  - Bash
-  - Read
-  - Write
 ---
 
 # Company Check — UK Due Diligence

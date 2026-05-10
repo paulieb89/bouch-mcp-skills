@@ -12,17 +12,6 @@ compatibility: Requires the BOUCH property MCP server (property-shared).
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - mcp__claude_ai_prop__rightmove_listing
-  - mcp__claude_ai_prop__property_comps
-  - mcp__claude_ai_prop__rental_analysis
-  - mcp__claude_ai_prop__rightmove_search
-  - mcp__claude_ai_prop__property_yield
-  - mcp__claude_ai_prop__stamp_duty
-  - mcp__claude_ai_prop__property_epc
-  - mcp__claude_ai_prop__property_blocks
-  - mcp__claude_ai_prop__company_search
-  - Bash
 ---
 
 # Property Deal Screener

@@ -6,10 +6,6 @@ description: |
   Use when someone asks about reduced properties, motivated sellers, price
   drops, bargains, or who has been on the market longest.
   Requires the Property MCP server (property-shared) to be connected.
-allowed-tools:
-  - mcp__claude_ai_prop__rightmove_search
-  - mcp__claude_ai_prop__rightmove_listing
-  - mcp__claude_ai_prop__property_comps
 ---
 
 # Motivated Seller Finder

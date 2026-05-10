@@ -5,11 +5,6 @@ description: |
   procedure). Use when someone wants to document how something works, write up a
   process for a new hire, stop doing the same thing from memory, or prepare a
   workflow for delegation or automation.
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - AskUserQuestion
 ---
 
 # SOP Writer

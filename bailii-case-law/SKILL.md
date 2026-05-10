@@ -6,10 +6,6 @@ description: |
   judgment, or check how courts have ruled on an issue. Covers UKSC, EWCA,
   EWHC, Upper Tribunal, EAT, and more. Requires the BAILII MCP server
   running locally (BAILII blocks cloud IPs).
-allowed-tools:
-  - mcp__claude_ai_bailii__bailii_search
-  - mcp__claude_ai_bailii__bailii_get_judgment
-  - mcp__claude_ai_bailii__bailii_list_courts
 ---
 
 # BAILII Case Law Research

@@ -5,10 +5,6 @@ description: |
   with owners and deadlines. Use when someone pastes meeting notes, shares
   a transcript, says "what came out of that meeting", or asks to extract
   actions from any unstructured text about a conversation or discussion.
-allowed-tools:
-  - Read
-  - Write
-  - Edit
 ---
 
 # Meeting Notes to Actions

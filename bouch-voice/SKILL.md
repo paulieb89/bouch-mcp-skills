@@ -10,11 +10,6 @@ compatibility: "No MCP required — standalone copywriting skill."
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
 ---
 
 # BOUCH Voice & Copy

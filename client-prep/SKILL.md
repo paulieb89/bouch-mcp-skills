@@ -6,13 +6,6 @@ description: |
   and recent news. Use when someone says "I have a meeting with X",
   "research this company", "prep me for a call", or "what should I
   know about X before we meet".
-allowed-tools:
-  - Read
-  - Write
-  - Grep
-  - Glob
-  - WebFetch
-  - WebSearch
 ---
 
 # Client Prep

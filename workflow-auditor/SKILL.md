@@ -10,11 +10,6 @@ compatibility: "No MCP required — standalone diagnostic skill."
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-  - AskUserQuestion
 ---
 
 # Workflow Auditor

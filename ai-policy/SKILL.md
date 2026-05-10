@@ -5,10 +5,6 @@ description: |
   data protection, approved tools, staff responsibilities, and GDPR basics.
   Use when someone asks about AI policy, shadow AI, "what rules should we
   have for AI", acceptable use, or GDPR and AI tools in the workplace.
-allowed-tools:
-  - Read
-  - Write
-  - Edit
 ---
 
 # AI Policy Generator

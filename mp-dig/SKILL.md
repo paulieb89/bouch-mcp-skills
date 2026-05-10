@@ -11,16 +11,6 @@ compatibility: "Requires UK Legal MCP and UK Due Diligence MCP servers."
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - mcp__claude_ai_uk-legal-tools__parliament_find_member
-  - mcp__claude_ai_uk-legal-tools__parliament_member_interests
-  - mcp__claude_ai_uk-legal-tools__parliament_member_debates
-  - mcp__claude_ai_uk-legal-tools__votes_search_divisions
-  - mcp__claude_ai_uk-legal-tools__votes_get_division
-  - mcp__claude_ai_uk-legal-tools__parliament_search_hansard
-  - mcp__claude_ai_uk-due-diligence__company_search
-  - mcp__claude_ai_uk-due-diligence__company_profile
-  - mcp__claude_ai_uk-due-diligence__company_officers
 ---
 
 # MP Dig

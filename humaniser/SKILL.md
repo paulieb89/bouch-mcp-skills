@@ -11,13 +11,6 @@ compatibility: "No MCP required — standalone editing skill."
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
-  - Bash
 ---
 
 # Humaniser: Make Business Writing Sound Human

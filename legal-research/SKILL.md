@@ -10,21 +10,6 @@ compatibility: "Requires UK Legal MCP server."
 metadata:
   author: bouch
   version: "2.0"
-allowed-tools:
-  - mcp__claude_ai_uk-legal-tools__legislation_search
-  - mcp__claude_ai_uk-legal-tools__legislation_get_toc
-  - mcp__claude_ai_uk-legal-tools__legislation_get_section
-  - mcp__claude_ai_uk-legal-tools__case_law_search
-  - mcp__claude_ai_uk-legal-tools__case_law_grep_judgment
-  - mcp__claude_ai_uk-legal-tools__list_resources
-  - mcp__claude_ai_uk-legal-tools__read_resource
-  - mcp__claude_ai_uk-legal-tools__citations_parse
-  - mcp__claude_ai_uk-legal-tools__citations_resolve
-  - mcp__claude_ai_uk-legal-tools__parliament_search_hansard
-  - mcp__claude_ai_uk-legal-tools__parliament_vibe_check
-  - mcp__claude_ai_uk-legal-tools__parliament_find_member
-  - mcp__claude_ai_uk-legal-tools__parliament_member_debates
-  - mcp__claude_ai_uk-legal-tools__hmrc_search_guidance
 ---
 
 # Legal Research Brief

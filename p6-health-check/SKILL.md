@@ -5,14 +5,6 @@ description: |
   path analysis, float distribution, logic quality assessment, and prioritised
   recommendations. Use when someone uploads an XER or asks to check, audit,
   or review a schedule. Requires the PyP6Xer MCP server.
-allowed-tools:
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_load_file
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_schedule_health_check
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_schedule_quality
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_critical_path
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_float_analysis
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_slipping_activities
-  - mcp__claude_ai_pyp6xer-mcp__pyp6xer_progress_summary
 ---
 
 # P6 Schedule Health Check
