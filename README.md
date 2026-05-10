@@ -1,6 +1,6 @@
 # BOUCH Skills
 
-30 free Claude skills for UK professionals — property, legal, due diligence, P6 schedules, Pine Script, and general workflow utilities. Every skill is a SKILL.md file using Anthropic's agent skill standard (YAML frontmatter, `allowed-tools`, description-based matching).
+31 free Claude skills for UK professionals — property, legal, due diligence, P6 schedules, Pine Script, and general workflow utilities. Every skill is a SKILL.md file using Anthropic's agent skill standard (YAML frontmatter, `allowed-tools`, description-based matching).
 
 Most MCP-backed skills connect to free BOUCH MCP servers for real UK data. Standalone skills run on any Claude (claude.ai, Claude Desktop, Claude Code) without infrastructure.
 
@@ -13,7 +13,7 @@ Most MCP-backed skills connect to free BOUCH MCP servers for real UK data. Stand
 npx skills add paulieb89/bouch-mcp-skills
 ```
 
-Installs all 30 skills. Works on any Claude Code install.
+Installs all 31 skills. Works on any Claude Code install.
 
 **Claude Code plugin (curated pack):**
 ```

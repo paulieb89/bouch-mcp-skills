@@ -20,23 +20,27 @@ Example — £500,000 primary residence:
 - Next £250,000 × 5% = £12,500
 - **SDLT = £12,500**
 
-## Additional property surcharge (3% on top)
+## Additional property surcharge (5% on top)
 
-For second homes, buy-to-let, or any additional residential property, add **3% to every band**. Applies if the buyer will own more than one residential property after completion.
+For second homes, buy-to-let, or any additional residential property, add **5% to every band**. Applies if the buyer will own more than one residential property worth £40,000 or more after completion. This includes properties owned anywhere in the world — a flat in Spain still triggers it.
+
+Companies purchasing residential property also pay the 5% surcharge.
 
 | Portion of price | Additional-property rate |
 |---|---|
-| Up to £250,000 | 3% |
-| £250,001 – £925,000 | 8% |
-| £925,001 – £1,500,000 | 13% |
-| Over £1,500,000 | 15% |
+| Up to £250,000 | 5% |
+| £250,001 – £925,000 | 10% |
+| £925,001 – £1,500,000 | 15% |
+| Over £1,500,000 | 17% |
 
 Example — £500,000 additional property:
-- First £250,000 × 3% = £7,500
-- Next £250,000 × 8% = £20,000
-- **SDLT = £27,500** (vs £12,500 primary — the surcharge adds £15,000)
+- First £250,000 × 5% = £12,500
+- Next £250,000 × 10% = £25,000
+- **SDLT = £37,500** (vs £12,500 primary — the surcharge adds £25,000)
 
-Rule of thumb for BTL: multiply primary SDLT by ~2.2 on typical 2-3 bed stock.
+Rule of thumb for BTL: additional-property SDLT is roughly 3× primary SDLT on typical 2–3 bed stock.
+
+**Main residence replacement:** if the buyer is selling their previous main home, the 5% surcharge does not apply. If they complete on the new property before selling the old one, the surcharge is charged upfront but is **refundable within 36 months** of selling the original home. Worth flagging — many buyers miss it.
 
 ## First-time buyer relief (primary residence only)
 
@@ -58,7 +62,7 @@ Example — £450,000 FTB purchase:
 
 If the buyer is non-UK resident for SDLT purposes (separate test from general UK tax residence), **add 2% to every band**. Stacks with the additional-property surcharge.
 
-So a non-resident buying an additional property pays standard + 3% + 2% = +5% on each band.
+So a non-resident buying an additional property pays standard + 5% + 2% = +7% on each band.
 
 ## Total acquisition cost estimate
 
@@ -85,10 +89,10 @@ The `stamp_duty` MCP tool handles all three when given a postcode. If it returne
 
 ## Gotchas to mention
 
-- **3% surcharge applies if you own ANY other residential property anywhere in the world**, not just in the UK. A flat in Spain still triggers it.
+- **5% surcharge applies if you own ANY other residential property worth £40,000+ anywhere in the world**, not just in the UK. A flat in Spain still triggers it.
 - **Uninhabitable property**: there's a niche argument that commercial SDLT rates apply to derelict or converted property. Uncommon — flag but don't apply without professional advice.
 - **Mixed-use** (e.g. shop with flat above): commercial rates apply to the whole lot. Much lower at the top band. Worth mentioning if the property has a commercial element.
-- **Main residence replacement**: if the buyer is replacing their main home, the 3% surcharge is refundable within 36 months of completion (used to be 3 years, watch the exact deadline). Worth flagging — many buyers miss it.
+- **Main residence replacement**: if the buyer is replacing their main home, the 5% surcharge is refundable within 36 months of completion. Worth flagging — many buyers miss it.
 
 ## What to hand the user
 
