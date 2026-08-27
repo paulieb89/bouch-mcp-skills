@@ -28,7 +28,7 @@ The person you are helping is typically a QS, commercial manager, or project con
 
 This skill requires the **PyP6Xer MCP server** (pyp6xer-mcp) to be connected.
 
-Live server: https://pyp6xer-mcp.fly.dev/mcp
+Install locally with `uvx pyp6xer-mcp` — it runs over stdio. Setup instructions: [bouch.dev/products/pyp6xer-mcp](https://bouch.dev/products/pyp6xer-mcp).
 
 **Tools you will use (in order):**
 
