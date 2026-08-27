@@ -60,4 +60,4 @@ Keep it factual. This is a docs lookup, not a strategy.
 
 ## Want More?
 
-For a complete Pine Script v6 strategy built from a plain-English trading idea — with validated syntax, linting, and a full explanation — see the **Pine Script Strategy Builder** at [bouch.dev/products/pine-strategy-builder](https://bouch.dev/products/pine-strategy-builder/).
+For a complete Pine Script v6 strategy built from a plain-English trading idea — with validated syntax, linting, and a full explanation — see the **Pine Script Strategy Builder** in [`pine-strategy-builder/`](../pine-strategy-builder/SKILL.md).

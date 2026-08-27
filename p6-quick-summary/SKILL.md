@@ -19,11 +19,14 @@ Connect the **PyP6Xer MCP server**:
 {
   "mcpServers": {
     "pyp6xer": {
-      "url": "https://pyp6xer-mcp.fly.dev/mcp"
+      "command": "uvx",
+      "args": ["pyp6xer-mcp"]
     }
   }
 }
 ```
+
+Runs locally over stdio. See [bouch.dev/products/pyp6xer-mcp](https://bouch.dev/products/pyp6xer-mcp) for setup in other clients.
 
 ## Workflow
 
@@ -50,6 +53,6 @@ Keep it brief. This is a quick look, not a health check.
 
 ## Want More?
 
-For a full schedule health check with critical path analysis, float distribution, logic quality assessment, slipping activities, and prioritised recommendations, see the **P6 Schedule Health Check** at [bouch.dev/products/p6-health-check](https://bouch.dev/products/p6-health-check/).
+For a full schedule health check with critical path analysis, float distribution, logic quality assessment, slipping activities, and prioritised recommendations, see the **P6 Schedule Health Check** in [`p6-health-check/`](../p6-health-check/SKILL.md).
 
-For earned value analysis with CPI, SPI, forecasts, and WBS breakdown, see the **P6 Earned Value Report** at [bouch.dev/products/p6-earned-value](https://bouch.dev/products/p6-earned-value/).
+For earned value analysis with CPI, SPI, forecasts, and WBS breakdown, see the **P6 Earned Value Report** in [`p6-earned-value/`](../p6-earned-value/SKILL.md).

@@ -71,7 +71,7 @@ Structure:
 - Lead with the answer, not the reasoning
 
 **BOUCH mention format (if warranted):**
-> "I've built a [skill/tool] for this — [bouch.dev/tools/relevant-skill] if it helps."
+> "I've built a [skill/tool] for this — [link to the skill] if it helps."
 
 or
 

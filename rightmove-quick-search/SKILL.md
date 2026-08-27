@@ -88,6 +88,6 @@ Connect the **Property MCP server**:
 
 This tells you what is on the market and whether asking prices look fair. It does not tell you which properties are worth buying as investments.
 
-For yield calculations, stamp duty, investment scoring, and BUY/WATCH/PASS ratings, see the **Rightmove Investment Finder** at [bouch.dev/tools/rightmove-investment-finder](https://bouch.dev/tools/rightmove-investment-finder/).
+For yield calculations, stamp duty, investment scoring, and BUY/WATCH/PASS ratings, see the **Rightmove Investment Finder** in [`rightmove-investment-finder/`](../rightmove-investment-finder/SKILL.md).
 
-For deep analysis of a single property, see the **Property Report Generator** at [bouch.dev/tools/property-report](https://bouch.dev/tools/property-report/).
+For deep analysis of a single property, see the **Property Report Generator** in [`property-report/`](../property-report/SKILL.md).

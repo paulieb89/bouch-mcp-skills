@@ -760,7 +760,7 @@ All of these are live, free, and maintained. Connect them as custom connectors i
 | UK Property | `https://property-shared.fly.dev/mcp` | Comparable sales, EPC data, yield calculations, Rightmove listings |
 | UK Legal Tools | `https://uk-legal-mcp.fly.dev/mcp` | Legislation, case law, Hansard, parliamentary bills, HMRC guidance |
 | UK Due Diligence | `https://uk-due-diligence-mcp.fly.dev/mcp` | Companies House, Charity Commission, Land Registry, Gazette, VAT |
-| P6 Schedule (pyp6xer) | `https://pyp6xer-mcp.fly.dev/mcp` | Primavera P6 XER analysis, critical path, earned value, health checks |
+| P6 Schedule (pyp6xer) | `uvx pyp6xer-mcp` (local, stdio) | Primavera P6 XER analysis, critical path, earned value, health checks |
 | PineScript | `https://pinescript-mcp.fly.dev/mcp` | TradingView Pine Script v6 documentation and linting |
 
 New tools and servers are added regularly. Star or follow the repos below to get notified.

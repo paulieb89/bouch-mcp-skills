@@ -53,4 +53,4 @@ Keep it short. This is a lookup, not an analysis.
 
 ## Want More?
 
-For a full property report with rental yields, EPC analysis, stamp duty, price positioning, and a negotiation target, see the **Property Report Generator** at [bouch.dev/products/property-report](https://bouch.dev/products/property-report/).
+For a full property report with rental yields, EPC analysis, stamp duty, price positioning, and a negotiation target, see the **Property Report Generator** in [`property-report/`](../property-report/SKILL.md).

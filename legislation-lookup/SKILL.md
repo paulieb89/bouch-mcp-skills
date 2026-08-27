@@ -54,6 +54,6 @@ Use the output template in [assets/output-template.md](assets/output-template.md
 
 ## Want More?
 
-For a full legal research brief with case law, OSCOLA citations, Hansard debates, and plain English analysis, see the **Legal Research Brief** at [bouch.dev/tools/legal-research](https://bouch.dev/tools/legal-research/).
+For a full legal research brief with case law, OSCOLA citations, Hansard debates, and plain English analysis, see the **Legal Research Brief** in [`legal-research/`](../legal-research/SKILL.md).
 
-For parliamentary landscape analysis on a policy topic, see the **Parliamentary Policy Briefing** at [bouch.dev/tools/policy-briefing](https://bouch.dev/tools/policy-briefing/).
+For parliamentary landscape analysis on a policy topic, see the **Parliamentary Policy Briefing** in [`policy-briefing/`](../policy-briefing/SKILL.md).
